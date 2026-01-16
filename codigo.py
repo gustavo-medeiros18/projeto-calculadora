@@ -25,36 +25,50 @@ def formatar_resultado(resultado):
 
     return resultado
 
-opcoes_validas = {"1", "2", "3", "4", "0"}
+def main():
+    opcoes_validas = {"1", "2", "3", "4", "0"}
 
-resultado_atual = float(input("Digite o valor inicial: "))
+    try:
+        resultado_atual = float(input("Digite o valor inicial: "))
+    except ValueError:
+        print("Valor inicial inválido")
+        return
 
-while True:
-    resultado_formatado = formatar_resultado(resultado_atual)
-    print(f"Resultado atual: {resultado_formatado}")
-    exibir_menu()
+    while True:
+        resultado_formatado = formatar_resultado(resultado_atual)
+        print(f"Resultado atual: {resultado_formatado}")
+        exibir_menu()
 
-    opcao_escolhida = input("Escolha uma opção: ")
+        opcao_escolhida = input("Escolha uma opção: ")
 
-    if opcao_escolhida == "0":
-        break
+        if opcao_escolhida == "0":
+            break
 
-    if opcao_escolhida not in opcoes_validas:
-        print("\nOpção inválida.")
-        print("Opções válidas: 1, 2, 3, 4 e 0\n")
+        if opcao_escolhida not in opcoes_validas:
+            print("\nOpção inválida.")
+            print("Opções válidas: 1, 2, 3, 4 e 0\n")
 
-        continue
+            continue
 
-    valor_operando = float(input("Digite o próximo valor do operando: "))
+        try:
+            valor_operando = float(input("Digite o próximo valor do operando: "))
+        except ValueError:
+            print("Número inválido")
+            continue
 
-    if opcao_escolhida == "1":
-        resultado_atual = soma(resultado_atual, valor_operando)
-    elif opcao_escolhida == "2":
-        resultado_atual = subtracao(resultado_atual, valor_operando)
-    elif opcao_escolhida == "3":
-        resultado_atual = multiplicacao(resultado_atual, valor_operando)
-    elif opcao_escolhida == "4":
-        resultado_atual = divisao(resultado_atual, valor_operando)
+        if opcao_escolhida == "1":
+            resultado_atual = soma(resultado_atual, valor_operando)
+        elif opcao_escolhida == "2":
+            resultado_atual = subtracao(resultado_atual, valor_operando)
+        elif opcao_escolhida == "3":
+            resultado_atual = multiplicacao(resultado_atual, valor_operando)
+        elif opcao_escolhida == "4":
+            try:
+                resultado_atual = divisao(resultado_atual, valor_operando)
+            except ZeroDivisionError:
+                print("Não se pode dividir por zero.")
 
 
-print("Encerrando a calculadora. Até mais!")
+    print("Encerrando a calculadora. Até mais!")
+
+main()
