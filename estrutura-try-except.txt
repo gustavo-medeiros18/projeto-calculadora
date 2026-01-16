@@ -1,0 +1,16 @@
+Tratamento de exceções consiste em
+implementar alguma estratégia no
+nosso código para que, caso um erro
+aconteça durante a execução, o programa
+possa reagir de maneira controlada
+(por exemplo, exibindo uma mensagem
+amigável ao usuário).
+
+try:
+    comando_1
+    comando_2
+    comando_3
+except NomeExcecao:
+    comando_1
+    comando_2
+    comando_3
