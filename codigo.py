@@ -10,10 +10,23 @@ def multiplicacao(a, b):
 def divisao(a, b):
     return a / b
 
-valor_1 = 10
-valor_2 = 20
+def exibir_menu():
+    print("\n=== CALCULADORA ===")
+    print("1 - Soma")
+    print("2 - Subtração")
+    print("3 - Multiplicação")
+    print("4 - Divisão")
+    print("0 - Sair")
 
-print("valor 1 somado com valor 2:", soma(valor_1, valor_2))
-print("valor 1 menos o valor 2:", subtracao(valor_1, valor_2))
-print("valor 1 multiplicado pelo valor 2:", multiplicacao(valor_1, valor_2))
-print("valor 1 dividido pelo valor 2:", divisao(valor_1, valor_2))
+valor_inicial = float(input("Digite o valor inicial: "))
+
+while True:
+    print(f"Resultado atual: {valor_inicial}")
+    exibir_menu()
+
+    opcao_escolhida = input("Escolha uma opção: ")
+
+    if opcao_escolhida == "0":
+        break
+
+print("Encerrando a calculadora. Até mais!")
